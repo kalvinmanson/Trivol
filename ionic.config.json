@@ -1,6 +1,8 @@
 {
   "name": "Trivol",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "f391e8c9"
 }
