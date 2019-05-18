@@ -14,6 +14,7 @@ export class GamePage implements OnInit {
   question:any = {};
   answers:any = [];
   response:number = 0;
+  random:any = 1;
 
   constructor(private questionsService:QuestionsService) { }
 
@@ -29,6 +30,7 @@ export class GamePage implements OnInit {
     this.answers = [this.question.res_a, this.question.res_b, this.question.res_c, this.question.res_d];
     this.answers.sort(function(a, b){return 0.5 - Math.random()});
     this.response = 0;
+    this.rand();
   }
   makeAnswer(answer) {
     if(answer == this.question.res_a) {
@@ -38,6 +40,13 @@ export class GamePage implements OnInit {
       this.response = 2;
       this.points--;
     }
+    this.rand();
+  }
+  rand() {
+    let min=1;
+    let max=4;
+    let random =Math.floor(Math.random() * (+max - +min)) + +min;
+    this.random = random;
   }
 
 }

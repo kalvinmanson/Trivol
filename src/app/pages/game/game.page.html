@@ -16,8 +16,18 @@
       <ion-card-title>{{ question.name }}</ion-card-title>
     </ion-card-header>
     <ion-list *ngIf="response > 0">
-      <ion-item *ngIf="response == 1"><ion-icon name="checkmark-circle-outline"></ion-icon> Bien</ion-item>
-      <ion-item *ngIf="response == 2"><ion-icon name="close"></ion-icon> Mal</ion-item>
+      <ng-container *ngIf="response == 1">
+        <ion-img [src]="'/assets/img/g'+ random +'.gif'"></ion-img>
+        <ion-item>
+          <ion-icon name="checkmark-circle-outline"></ion-icon> Bien
+        </ion-item>
+      </ng-container>
+      <ng-container *ngIf="response == 2">
+        <ion-img src="/assets/img/w1.gif"></ion-img>
+        <ion-item>
+          <ion-icon name="close"></ion-icon> Mal
+        </ion-item>
+      </ng-container>
       <p align="center">
         <ion-button (click)="showQuestion()">
           <ion-icon name="logo-game-controller-b"></ion-icon> Siguiente pregunta

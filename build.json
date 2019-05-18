@@ -1,0 +1,18 @@
+{
+  "android": {
+    "debug": {
+       "keystore": "trivol.keystore",
+       "storePassword": "mipass",
+       "alias": "trivol",
+       "password" : "mipass",
+       "keystoreType": ""
+    },
+    "release": {
+       "keystore": "trivol.keystore",
+       "storePassword": "mipass",
+       "alias": "trivol",
+       "password" : "mipass",
+       "keystoreType": ""
+    }
+  }
+}
