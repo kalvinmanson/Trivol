@@ -1,18 +1,19 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="dark">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
       ¡A jugar!
     </ion-title>
+    <ion-badge color="secondary" slot="end">Puntos: {{ points }}</ion-badge>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>{{ question.category }}</ion-card-subtitle>
+    <ion-card-header color="tertiary">
+      <ion-card-subtitle *ngIf="question.category">{{ question.category.toUpperCase() }}</ion-card-subtitle>
       <ion-card-title>{{ question.name }}</ion-card-title>
     </ion-card-header>
     <ion-list *ngIf="response > 0">
@@ -23,7 +24,7 @@
         </ion-item>
       </ng-container>
       <ng-container *ngIf="response == 2">
-        <ion-img src="/assets/img/w1.gif"></ion-img>
+        <ion-img [src]="'/assets/img/w'+ random +'.gif'"></ion-img>
         <ion-item>
           <ion-icon name="close"></ion-icon> Mal
         </ion-item>
@@ -36,7 +37,6 @@
     </ion-list>
     <ion-list *ngIf="response == 0">
       <ion-item *ngFor="let answer of answers" (click)="makeAnswer(answer)">{{ answer }}</ion-item>
-      <ion-item>Puntos: {{ points }}</ion-item>
     </ion-list>
   </ion-card>
 </ion-content>

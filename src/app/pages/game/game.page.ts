@@ -12,25 +12,28 @@ export class GamePage implements OnInit {
   points:number = 0;
   items:any = [];
   question:any = {};
+  questionMin:number = 0;
+  questionMax:number = 0;
   answers:any = [];
   response:number = 0;
-  random:any = 1;
+  pointer:any = 0;
+  random:any = 0;
 
   constructor(private questionsService:QuestionsService) { }
 
   ngOnInit() {
     this.questionsService.getQuestions().subscribe((res)=>{
       this.items = res;
+      this.items.sort(function(a, b){return 0.5 - Math.random()});
       this.showQuestion();
     })
+    this.questionsService.upload();
   }
   showQuestion() {
-    let random =Math.floor(Math.random() * (this.items.length - 0)) + 0;
-    this.question = this.items[random];
+    this.question = this.items[this.pointer];
     this.answers = [this.question.res_a, this.question.res_b, this.question.res_c, this.question.res_d];
     this.answers.sort(function(a, b){return 0.5 - Math.random()});
     this.response = 0;
-    this.rand();
   }
   makeAnswer(answer) {
     if(answer == this.question.res_a) {
@@ -41,6 +44,7 @@ export class GamePage implements OnInit {
       this.points--;
     }
     this.rand();
+    this.pointer++;
   }
   rand() {
     let min=1;
